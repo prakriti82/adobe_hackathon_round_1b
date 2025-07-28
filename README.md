@@ -6,7 +6,8 @@ We created a persona-aware PDF summarization engine that:
 
 Parses the document into manageable chunks. Generates embeddings using the all-MiniLM-L6-v2 SentenceTransformer. Accepts a persona query. Ranks and selects the most relevant text spans. Returns a condensed summary tailored to the input persona. This solution is containerized using Docker for cross-platform portability.
 
-# 📂 Project Structure round1b/ │ ├── input/ # Folder containing the input PDF │ └── research_paper.pdf │ ├── output/ # Folder where persona-specific summary is saved │ └── research_paper_summary.txt │ ├── model/ # Pre-downloaded SentenceTransformer model │ └── all-MiniLM-L6-v2/ │ ├── main.py # Main pipeline script ├── save_model.py # Script to download & save the embedding model ├── requirements.txt # Python package dependencies ├── Dockerfile # Docker container definition └── README.md # Project documentation
+# 📂 Project Structure round1b/ 
+│ ├── input/ # Folder containing the input PDF │ └── research_paper.pdf │ ├── output/ # Folder where persona-specific summary is saved │ └── research_paper_summary.txt │ ├── model/ # Pre-downloaded SentenceTransformer model │ └── all-MiniLM-L6-v2/ │ ├── main.py # Main pipeline script ├── save_model.py # Script to download & save the embedding model ├── requirements.txt # Python package dependencies ├── Dockerfile # Docker container definition └── README.md # Project documentation
 
 yaml Copy Edit
 
