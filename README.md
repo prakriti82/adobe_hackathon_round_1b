@@ -9,8 +9,6 @@ Parses the document into manageable chunks. Generates embeddings using the all-M
 # 📂 Project Structure round1b/ 
 │ ├── input/ # Folder containing the input PDF │ └── research_paper.pdf │ ├── output/ # Folder where persona-specific summary is saved │ └── research_paper_summary.txt │ ├── model/ # Pre-downloaded SentenceTransformer model │ └── all-MiniLM-L6-v2/ │ ├── main.py # Main pipeline script ├── save_model.py # Script to download & save the embedding model ├── requirements.txt # Python package dependencies ├── Dockerfile # Docker container definition └── README.md # Project documentation
 
-yaml Copy Edit
-
 # 🚀 How to Run (Locally)
 
 ✅ Install Dependencies in a Virtual Environment python -m venv venv source venv/bin/activate # or venv\Scripts\activate on Windows pip install -r requirements.txt 📥 Download the SentenceTransformer Model python save_model.py This will create the folder model/all-MiniLM-L6-v2 with the necessary weights.
