@@ -1,0 +1,43 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+.venv/
+venv/
+
+# Tokenizer or build artifacts
+*.egg-info/
+*.egg
+*.whl
+*.abi
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# VSCode settings
+.vscode/
+
+# Environment files
+.env
+
+# Compiled or temporary files
+*.log
+*.tmp
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebook checkpoints (if any)
+.ipynb_checkpoints/
+
+# PyInstaller build
+build/
+dist/
+
+# Misc
+*.bak
+*.swp
