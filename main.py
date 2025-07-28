@@ -1,21 +1,17 @@
-# main.py
 
 import os
 import json
-import fitz  # PyMuPDF
+import fitz  
 from llama_cpp import Llama
-import re  # Import the regular expression module
-import datetime # Import the datetime module for timestamps
+import re  
+import datetime 
 
-# --- Configuration ---
 DATA_DIR = "/app/data"
 MODEL_PATH = "/app/model/qwen1_5-1_8b-chat-q3_k_m.gguf"
 PDF_DIR = os.path.join(DATA_DIR, "PDFs")
 INPUT_FILE = os.path.join(DATA_DIR, "challenge1b_input.json")
 OUTPUT_FILE = os.path.join(DATA_DIR, "challenge1b_output.json")
 
-# --- ONE-SHOT EXAMPLE ---
-# Providing an example of the final output dramatically improves model accuracy.
 EXAMPLE_OUTPUT = """
 {
   "metadata": {
@@ -57,7 +53,6 @@ EXAMPLE_OUTPUT = """
 """
 
 
-# Initialize the Local LLM
 try:
     print(f"Loading model from {MODEL_PATH}...")
     llm = Llama(
@@ -71,7 +66,6 @@ except Exception as e:
     print(f"Error loading local LLM model: {e}")
     exit(1)
 
-# --- Helper Functions ---
 
 def extract_text_from_pdfs(pdf_filenames):
     """Extracts text content from a list of PDF files."""
@@ -96,7 +90,7 @@ def llm_call(messages):
     try:
         response = llm.create_chat_completion(
             messages=messages,
-            temperature=0.05, # Lower temperature for more predictable, structured output
+            temperature=0.05, 
         )
         content = response['choices'][0]['message']['content']
         
@@ -178,7 +172,7 @@ def reduce_and_rank_sections(all_sections, persona, task, input_documents_list):
     ]
 
     final_json = llm_call(messages)
-    if final_json and 'metadata' in final_json: # Check for metadata to help ensure it's the final object
+    if final_json and 'metadata' in final_json:
          final_json['metadata'] = {
             "input_documents": input_documents_list,
             "persona": persona['role'],
@@ -188,7 +182,6 @@ def reduce_and_rank_sections(all_sections, persona, task, input_documents_list):
     return final_json
 
 
-# --- Main Execution Logic ---
 def main():
     """Main function to run the entire analysis pipeline."""
     print("--- Starting Challenge 1b (Final Version) ---")
@@ -213,7 +206,7 @@ def main():
     all_extracted_sections = []
     for doc in documents_content:
         sections = map_document_to_sections(doc, persona, task)
-        if sections and isinstance(sections, list): # Ensure we have a list
+        if sections and isinstance(sections, list):
             all_extracted_sections.extend(sections)
     
     if not all_extracted_sections:

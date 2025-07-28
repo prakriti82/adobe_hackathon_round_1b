@@ -1,4 +1,3 @@
-# extractor_1b.py
 
 import os
 import json
@@ -6,7 +5,6 @@ import datetime
 from heading_utils import extract_headings_and_text
 from semantic_utils import rank_sections_by_similarity
 
-# This is the directory where Docker will mount the collection folder.
 DATA_DIR = "/app/data"
 PDF_DIR = os.path.join(DATA_DIR, "PDFs")
 INPUT_FILE = os.path.join(DATA_DIR, "challenge1b_input.json")
@@ -18,7 +16,6 @@ def main():
     """
     print("--- Starting PDF Analysis ---")
 
-    # 1. Load persona and job from the correct input file
     try:
         with open(INPUT_FILE, "r") as f:
             input_data = json.load(f)
@@ -32,7 +29,6 @@ def main():
 
     combined_query = f"Persona: {persona}. Task to be done: {job}"
 
-    # 2. Extract sections from all specified PDF documents
     all_sections = []
     print(f"Processing documents: {documents_to_process}")
     for filename in documents_to_process:
@@ -48,12 +44,10 @@ def main():
         print("No sections were extracted from any documents. Exiting.")
         return
 
-    # 3. Rank all extracted sections based on semantic similarity
     print("Ranking sections based on similarity to the query...")
     ranked_sections = rank_sections_by_similarity(all_sections, combined_query)
     print(f"Ranking complete. Found {len(ranked_sections)} relevant sections.")
 
-    # 4. Construct the final output JSON in the required format
     output_data = {
         "metadata": {
             "input_documents": documents_to_process,
@@ -65,7 +59,6 @@ def main():
         "subsection_analysis": []
     }
 
-    # Take the top 10 most relevant sections
     for i, item in enumerate(ranked_sections[:10]):
         output_data["extracted_sections"].append({
             "document": item["document"],
@@ -75,11 +68,10 @@ def main():
         })
         output_data["subsection_analysis"].append({
             "document": item["document"],
-            "refined_text": item["text"], # This now contains the text under the heading
+            "refined_text": item["text"], 
             "page_number": item["page"]
         })
 
-    # 5. Write the final output file
     try:
         with open(OUTPUT_FILE, "w") as f:
             json.dump(output_data, f, indent=2)
