@@ -1,11 +1,12 @@
 # Adobe Connecting the Dots – Round 1B Submission
 🎯 Problem Statement: Persona-driven Document Intelligence The objective of Round 1B is to develop a system that can provide persona-driven content recommendations from research papers. Given a research paper and a target persona (e.g., high school student, policy-maker, graduate researcher), the system must extract relevant information and generate a concise, persona-specific summary.
 
-# 🛠️ Solution Overview We created a persona-aware PDF summarization engine that:
+# 🛠️ Solution Overview 
+We created a persona-aware PDF summarization engine that:
 
 Parses the document into manageable chunks. Generates embeddings using the all-MiniLM-L6-v2 SentenceTransformer. Accepts a persona query. Ranks and selects the most relevant text spans. Returns a condensed summary tailored to the input persona. This solution is containerized using Docker for cross-platform portability.
 
-📂 Project Structure round1b/ │ ├── input/ # Folder containing the input PDF │ └── research_paper.pdf │ ├── output/ # Folder where persona-specific summary is saved │ └── research_paper_summary.txt │ ├── model/ # Pre-downloaded SentenceTransformer model │ └── all-MiniLM-L6-v2/ │ ├── main.py # Main pipeline script ├── save_model.py # Script to download & save the embedding model ├── requirements.txt # Python package dependencies ├── Dockerfile # Docker container definition └── README.md # Project documentation
+# 📂 Project Structure round1b/ │ ├── input/ # Folder containing the input PDF │ └── research_paper.pdf │ ├── output/ # Folder where persona-specific summary is saved │ └── research_paper_summary.txt │ ├── model/ # Pre-downloaded SentenceTransformer model │ └── all-MiniLM-L6-v2/ │ ├── main.py # Main pipeline script ├── save_model.py # Script to download & save the embedding model ├── requirements.txt # Python package dependencies ├── Dockerfile # Docker container definition └── README.md # Project documentation
 
 yaml Copy Edit
 
@@ -54,5 +55,3 @@ arduino Copy Edit This research explores the use of AI in understanding human la
 ✅ Ability to extract useful context from complex research papers
 
 ✅ Accuracy and fluency of generated content
-
-👨‍💻 Author Built with ❤️ by Ashutosh Bhardwaj for the Adobe Connecting the Dots Challenge – Round 1B
