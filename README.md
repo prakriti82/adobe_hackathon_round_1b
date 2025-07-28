@@ -45,7 +45,7 @@ numpy
 
 📥 Sample Output Input: research_paper.pdf Persona: "Explain this paper to a high school student."
 
-Output:
+# Output:
 
 output/research_paper_summary.txt Sample contents:
 
